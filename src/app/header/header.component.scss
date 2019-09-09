@@ -1,0 +1,41 @@
+$bgDefault   : #00b8e6;
+$colDefault  : #ecf0f1;
+$colHighlight: #070202;
+.navbar-default {
+  background-color: $bgDefault;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight;
+    }
+  }
+  .navbar-text {
+    color: $colDefault;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight;
+        }
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+      }
+    }
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+      }
+    }
+  }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight;
+    }
+  }
+}
