@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   },
   {
     id: 1,
-    username: 'Windstorm',
+    username: 'Sandstorm',
     signUpDate: null,
     email: 'john',
     dateOfBirth: null,
@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
   },
   {
     id: 1,
-    username: 'Windstorm',
+    username: 'Shitstorm',
     signUpDate: null,
     email: 'john',
     dateOfBirth: null,
@@ -35,7 +35,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect(user: User){
-    alert(user.username);
+  onSelect(user: User): void {
+    console.log(user.username);
   }
 }
