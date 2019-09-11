@@ -1,7 +1,7 @@
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	background:#f6f6f6;
-    background-image:url('../img/bg.jpg');
+  background-image:url('../img/bg.jpg');
  	background-repeat: no-repeat;
 }
 ::-webkit-scrollbar {
@@ -1183,7 +1183,7 @@ ul.bullet {
 .about-me .ad-text {
 	padding:25px;
 	background:#FFF;
-	border-radius:0 0 4px 4px;
+	border-radius:4px;
 	text-align:center;
 }
 .about-me .ad-text p {
