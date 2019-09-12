@@ -1,13 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../models/user.model';
-
-interface Post {
-  id: number;
-  title: string;
-  date: Date;
-  location: string;
-  likes: User[];
-}
+import {Post} from '../models/post-model';
 
 @Component({
   selector: 'app-dash',
