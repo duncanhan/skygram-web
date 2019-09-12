@@ -10,9 +10,9 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
-import {UserComponent} from './user/user.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import {TimeAgoPipe} from 'time-ago-pipe';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    UserComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
