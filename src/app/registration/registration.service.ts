@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,6 @@ export class RegistrationService {
       birthday,
       phone
     };
-    return this.httpClient.post('http://10.10.70.171:8080/register', regisData);
+    return this.httpClient.post(environment.url+'/register', regisData);
   }
 }
