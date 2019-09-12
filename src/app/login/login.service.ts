@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,6 @@ export class LoginService {
       account,
       password
     };
-    return this.httpClient.post('http://10.10.70.171:8080/login', data);
+    return this.httpClient.post('http://3.229.181.91:8080/login', data);
   }
 }
