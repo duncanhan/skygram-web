@@ -1,35 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './user.model';
+import {Component, OnInit} from '@angular/core';
+import {User} from './user.model';
+import {Post} from '../models/post-model';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  users: User[] = [{
-    id: 1,
-    username: 'Windstorm',
-    signUpDate: null,
-    email: 'john',
-    dateOfBirth: null,
-    password: '123'
-  },
-  {
-    id: 1,
-    username: 'Sandstorm',
-    signUpDate: null,
-    email: 'john',
-    dateOfBirth: null,
-    password: '123'
-  },
-  {
-    id: 1,
-    username: 'Shitstorm',
-    signUpDate: null,
-    email: 'john',
-    dateOfBirth: null,
-    password: '123'
-  }];
+  posts: Post[] = [
+    {
+      id: 1,
+      title: 'First Post',
+      date: new Date(),
+      location: 'assets/img/img-post-4.jpg',
+      likes: null
+    },
+    {
+      id: 2,
+      title: 'Second Post',
+      date: new Date(),
+      location: 'assets/img/img-post-5.jpg',
+      likes: null
+    },
+    {
+      id: 3,
+      title: 'Third Post',
+      date: new Date(),
+      location: 'assets/img/img-post-6.jpg',
+      likes: null
+    },
+    {
+      id: 4,
+      title: 'Fourth Post',
+      date: new Date(),
+      location: 'assets/img/img-post-7.jpg',
+      likes: null
+    },
+    {
+      id: 5,
+      title: 'Fourth Post',
+      date: new Date(),
+      location: 'assets/img/img-post-8.jpg',
+      likes: null
+    },
+    {
+      id: 6,
+      title: 'Fourth Post',
+      date: new Date(),
+      location: 'assets/img/img-post-9.jpg',
+      likes: null
+    }];
   constructor() { }
 
   ngOnInit() {
