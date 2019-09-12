@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-default">
+<!-- <nav class="navbar navbar-expand-lg navbar-default">
     <a class="navbar-brand" href="#">Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,4 +18,26 @@
         <button class="btn my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
-</nav>
+</nav> -->
+<header class="tada-container">
+
+  <nav class="menu-desktop menu-sticky">
+    <div class = "logo">
+      <span [routerLink]="['/']"><img src="../../assets/img/favicon.png"> | SkyGram</span>
+    </div>
+    <div class="tada-search">
+      <form>
+        <div class="form-group-search">
+          <i class="fas fa-search fa2x"></i>
+          <input type="search" class="search-field" placeholder="Search and hit enter...">
+          <button type="submit" class="search-btn"><i class="icon-search4"></i></button>
+          <div class = "toTheRight">
+            <div  *ngIf="token" class = "avatarFrame">
+                <img class = "avatar" src="../../assets/img/avatar2.png">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>

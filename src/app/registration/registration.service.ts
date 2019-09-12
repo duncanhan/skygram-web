@@ -20,6 +20,6 @@ export class RegistrationService {
       birthday,
       phone
     };
-    return this.httpClient.post('http://10.10.70.171:8080/register', regisData);
+    return this.httpClient.post('http://3.229.181.91/register', regisData);
   }
 }

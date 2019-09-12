@@ -274,8 +274,7 @@ nav li:hover > ul.submenu > li:hover > ul.submenu {
 }
 input[type="search"] {
 	border:0;
-	font-style: italic;
-    font-size: 12px;
+  font-size: 18px;
 }
 .tada-search button {
 	background:none;
@@ -286,7 +285,7 @@ header li {
     list-style: outside none none;
 }
 header a {
-    font-size: 14px;
+    font-size: 18px;
     text-decoration: none;
 	color:#ffffff;
 }
@@ -399,7 +398,7 @@ nav.sticky li:hover ul.submenu {
 	border-radius:6px;
 	margin-top:60px;
 	color:#000;
-	font-size:12px;
+	font-size:18px;
 	letter-spacing:2px;
 }
 .tada-text-container .button a:hover {

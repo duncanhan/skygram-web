@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('first_name', data.first_name);
         localStorage.setItem('last_name', data.last_name);
         this.alert.success('Welcome to SkyGram ' + data.first_name + ' ' + data.last_name + '.');
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/dashboard');
       }
     }, err => {
         this.alert.error('Username or password was wrong!');
