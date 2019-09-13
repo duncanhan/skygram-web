@@ -7,7 +7,6 @@ import {Post} from '../models/post-model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   posts: Post[] = [
     {
       id: 1,
@@ -44,4 +43,5 @@ export class DashboardComponent implements OnInit {
   }
 
   // todo add logic to fetch posts from back end
+
 }

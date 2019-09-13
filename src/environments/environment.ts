@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://3.229.181.91'
+  url: 'http://3.229.181.91',
+  endpoint: 'http://3.229.181.91'
 };
 
 /*
