@@ -11,6 +11,7 @@ export class CreatePostComponent implements OnInit {
   uploadForm: FormGroup;
   mediaUrl: any;
   message: any;
+  accepted: boolean;
 
   constructor(private formBuilder: FormBuilder, private createPostService: CreatePostService) { }
 
@@ -21,6 +22,7 @@ export class CreatePostComponent implements OnInit {
       location: [''],
       hashtags: ['']
     });
+    this.accepted = false;
   }
 
   onFileSelect(event) {
@@ -33,6 +35,7 @@ export class CreatePostComponent implements OnInit {
       var mimeType = file.type;
       if (mimeType.match(/image\/*/) == null && mimeType.match(/video\/*/) == null) {
         this.message = "Only images are supported.";
+        this.accepted = false;
         return;
       }
 
@@ -49,9 +52,17 @@ export class CreatePostComponent implements OnInit {
     console.log(this.uploadForm.value);
     formData.append('media', this.uploadForm.value.media);
     formData.append('title', this.uploadForm.value.title);
+    const locArray = ['0.3445','32.4353'];
+    formData.append("location",JSON.stringify(locArray).replace(/[\[\]']+/g,''));
+    const hashtagArray = this.uploadForm.value.hashtags.split(",");
+    formData.append('hashtags',JSON.stringify(hashtagArray).replace(/[\[\]']+/g,''));
     console.log(formData);
     this.createPostService.createPost(formData).subscribe(res => {
       console.log(res);
+      if(res.code==200){
+        this.accepted = true;
+      }
+      this.message = res.message;
     }, err => console.log(err));
   }
 }
