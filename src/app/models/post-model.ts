@@ -4,7 +4,7 @@ export interface Post {
   location: Coordinate;
   comments: Discussion[];
   likes: Like[],
-  media: Media[];
+  medias: Media[];
   hashtags: string[];
   posted_date: Date;
   last_modified_date: Date;

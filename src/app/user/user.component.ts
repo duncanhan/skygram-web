@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../models/user.model';
 import {Post} from '../models/post-model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {UserResponse} from '../models/user-response';
 import {PostResponse} from '../models/post-response.model';
@@ -13,12 +13,14 @@ import {PostResponse} from '../models/post-response.model';
 export class UserComponent implements OnInit {
   user: User;
   posts: Post[];
+  headers = new HttpHeaders({
+    Authorization: 'Bearer ' + localStorage.getItem('token')
+  });
 
-  constructor(private httpClient: HttpClient, ) {}
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {
     const username = localStorage.getItem('username');
-    console.log(username);
     this.getUserDetails(username);
     this.getUserPosts(username);
   }
@@ -29,8 +31,7 @@ export class UserComponent implements OnInit {
 
   getUserDetails(username: string): void {
     const url = environment.endpoint + '/users/' + username;
-    console.log(url)
-    this.httpClient.get<UserResponse>(url).subscribe(
+    this.httpClient.get<UserResponse>(url, {headers: this.headers}).subscribe(
       response => {
         if (response.code === 200) {
           console.log(response); // debug
@@ -38,13 +39,12 @@ export class UserComponent implements OnInit {
         }
       }, error => {
         this.handleError(error);
-      }, () => {
-        console.log('all done');
       });
   }
 
   getUserPosts(username: string): void {
-    this.httpClient.get<PostResponse>(environment.endpoint + '/users/' + username + '/posts').subscribe(
+    const url = environment.endpoint + '/users/' + username + '/posts';
+    this.httpClient.get<PostResponse>(url, {headers: this.headers}).subscribe(
       response => {
         if (response.code === 200) {
           console.log(response); // debug

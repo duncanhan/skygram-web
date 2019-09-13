@@ -25,7 +25,7 @@
 
     <div class="content col-xs-8">
       <div class="profile">
-        <h1>Xi-da-man</h1>
+        <h1>{{ user?.username }}</h1>
         <div class="profile-area profile-button">
           <span><button class="btn-default">Following</button></span>
           <span><button class="btn-default" style="width: 34px;"><i class="fas fa-caret-down"></i></button></span>
@@ -34,13 +34,13 @@
       <div class="profile">
         <ul>
           <li><b>{{ posts?.length }}</b> posts</li>
-          <li><b>{{ 21 }}</b> followers</li>
-          <li><b>{{ 56 }}</b> following</li>
+          <li><b>{{ user?.followers === undefined ? 0 : user?.followers?.length }}</b> followers</li>
+          <li><b>{{ user?.followings === undefined ? 0 : user?.followings?.length }}</b> following</li>
         </ul>
       </div>
       <div class="profile-bottom">
-        <h3><b>Xi Ng Lee</b></h3>
-        <p><a href="www.ng-lee.com">www.ng-lee.com</a></p>
+        <h3><b>{{ user?.first_name + ' ' + user?.last_name }}</b></h3>
+        <p><a href="{{ user?.email }}">{{ user?.email }}</a></p>
         <a href="#">Followed by <span>jin_yang</span>, <span>pingpong</span>, <span>planet_stars</span> +11 more</a>
       </div>
     </div>
@@ -49,14 +49,16 @@
 
   <div class="profile-content-area">
 
-    <div class="content col-xs-4" *ngFor= "let post of posts">
+    <div *ngFor= "let post of posts">
+      <div class="content col-xs-4" *ngFor= "let media of post.medias">
 
-      <article class="profile-images">
-        <div class="profile-post-image">
-          <img src="{{ post.location }}" alt="{{ post.title }}">
-        </div>
-      </article>
+        <article class="profile-images">
+          <div class="profile-post-image">
+            <img src="{{ media.url }}" alt="{{ post.title }}">
+          </div>
+        </article>
 
+      </div>
     </div>
 
   </div>
