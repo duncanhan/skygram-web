@@ -27,8 +27,8 @@ export class DashboardComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }
     this.username = localStorage.getItem('username');
-    this.getUsers();
     this.getPosts();
+    this.getUsers();
   }
 
   getUsers(): void {
@@ -60,6 +60,19 @@ export class DashboardComponent implements OnInit {
     console.log('Could not fetch content from server: ' + JSON.stringify(error));
   }
 
-  // todo add logic to fetch posts from back end
+  follow(username) {
+    const url = environment.url + '/users/' + username + "/follow";
+    this.httpClient.post<any>(url, [], {headers: this.headers}).subscribe(
+      response => {
+        console.log(response);
+        if (response.code === 200) {
+          console.log(response.message);
+
+        }
+      },
+      error => {
+        this.handleError(error);
+      });
+  }
 
 }
