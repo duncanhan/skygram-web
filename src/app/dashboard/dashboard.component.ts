@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../models/post-model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dash',
@@ -9,9 +10,13 @@ import {Post} from '../models/post-model';
 export class DashboardComponent implements OnInit {
   posts: Post[] = [
   ];
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    if (localStorage.getItem('token') === null) {
+      this.router.navigateByUrl('/login');
+    }
   }
 
   // todo add logic to fetch posts from back end

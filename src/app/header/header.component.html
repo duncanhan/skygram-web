@@ -24,7 +24,7 @@
   <nav class="menu-desktop menu-sticky">
     <div class="header-content-area">
       <div class="{{ token ? 'auth-logo' : 'logo' }}">
-        <span [routerLink]="['/']">SkyGram<img src="../../assets/img/favicon.png"></span>
+        <span [routerLink]="['/dashboard']">SkyGram<img src="../../assets/img/favicon.png"></span>
       </div>
       <div *ngIf="token" class="tada-search">
         <form>
@@ -35,7 +35,7 @@
                 <div class = "avatarFrame dropdown">
                   <img class = "avatar" src="../../assets/img/avatar2.png">
                   <div class="dropdown-content">
-                      <a href="#">My page</a>
+                      <a [routerLink]="['/user']">Profile</a>
                       <a (click)=logOut()>Log out</a>
                   </div>
                 </div>
