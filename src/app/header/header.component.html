@@ -22,22 +22,23 @@
 <header class="tada-container">
 
   <nav class="menu-desktop menu-sticky">
-    <div class = "logo">
-      <span [routerLink]="['/']"><img src="../../assets/img/favicon.png"> | SkyGram</span>
-    </div>
-    <div class="tada-search">
-      <form>
-        <div class="form-group-search">
-          <i class="fas fa-search fa2x"></i>
-          <input type="search" class="search-field" placeholder="Search and hit enter...">
-          <button type="submit" class="search-btn"><i class="icon-search4"></i></button>
-          <div class = "toTheRight">
-            <div  *ngIf="token" class = "avatarFrame">
+    <div class="header-content-area">
+      <div class="{{ token ? 'auth-logo' : 'logo' }}">
+        <span [routerLink]="['/']">SkyGram<img src="../../assets/img/favicon.png"></span>
+      </div>
+      <div *ngIf="token" class="tada-search">
+        <form>
+          <div class="form-group-search">
+            <input type="search" class="search-field" placeholder="Search">
+            <button type="submit" class="search-btn" hidden><i class="fas fa-search fa2x"></i></button>
+            <div class = "toTheRight">
+              <div class = "avatarFrame">
                 <img class = "avatar" src="../../assets/img/avatar2.png">
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </nav>
 </header>

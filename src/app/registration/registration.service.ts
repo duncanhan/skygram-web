@@ -21,6 +21,6 @@ export class RegistrationService {
       birthday,
       phone
     };
-    return this.httpClient.post(environment.url + '/register', regisData);
+    return this.httpClient.post(environment.url+'/register', regisData);
   }
 }

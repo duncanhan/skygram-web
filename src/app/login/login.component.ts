@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from './login.service';
-import { ToastrService } from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from './login.service';
+import {ToastrService} from 'ngx-toastr';
 import * as jwt_decode from 'jwt-decode';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('first_name', data.first_name);
         localStorage.setItem('last_name', data.last_name);
         this.alert.success('Welcome to SkyGram ' + data.first_name + ' ' + data.last_name + '.');
+        location.reload();
         this.router.navigateByUrl('/dashboard');
       }
     }, err => {
