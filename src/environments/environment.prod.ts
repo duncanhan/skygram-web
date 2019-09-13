@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  endpoint: 'http://3.229.181.91:8080'
 };

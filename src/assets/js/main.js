@@ -11,7 +11,7 @@
 		jQuery("#preloader-container").delay(2000).fadeOut("slow");
 
 		/* STICKY MENU */
-		var stickyTop = $('nav.menu-sticky').offset().top;
+		// var stickyTop = $('nav.menu-sticky').offset().top;
 		$(window).scroll(function(){
 			if ($(this).scrollTop() > 0) {
 				$('nav').addClass('sticky');
