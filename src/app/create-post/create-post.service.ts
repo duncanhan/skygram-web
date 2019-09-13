@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import { environment } from '../../environments/environment'
 
 
 @Injectable({
@@ -18,6 +19,6 @@ export class CreatePostService {
   constructor(private httpClient: HttpClient) { }
 
   public createPost(formData: FormData): Observable<any> {
-    return this.httpClient.post<any>('http://3.229.181.91/posts', formData, this.httpOptions);
+    return this.httpClient.post<any>(environment.url+'/posts', formData, this.httpOptions);
   }
 }
