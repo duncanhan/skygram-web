@@ -53,8 +53,8 @@ export class CreatePostComponent implements OnInit {
     const hashtagArray = this.uploadForm.value.hashtags.split(",");
     formData.append('media', this.uploadForm.value.media);
     formData.append('title', this.uploadForm.value.title);
-    formData.append("location",JSON.stringify(locArray).replace(/[\[\]']+/g,''));
-    formData.append('hashtags',JSON.stringify(hashtagArray).replace(/[\[\]']+/g,''));
+    formData.append("location",JSON.stringify(locArray));
+    formData.append('hashtags',JSON.stringify(hashtagArray));
     this.createPostService.createPost(formData).subscribe(res => {
       console.log(res);
       if(res.code==200){
