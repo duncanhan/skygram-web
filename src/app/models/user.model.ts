@@ -9,6 +9,6 @@ export class User {
   // tslint:disable-next-line:variable-name
   last_name: string;
   phone: string;
-  followers: User[];
-  followings: User[];
+  numOfFollowers: number;
+  numOfFollowings: number;
 }

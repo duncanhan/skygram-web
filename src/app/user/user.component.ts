@@ -39,6 +39,7 @@ export class UserComponent implements OnInit {
       response => {
         if (response.code === 200) {
           this.user = response.data as User;
+          console.log(this.user);
         }
       }, error => {
         this.handleError(error);
@@ -51,6 +52,7 @@ export class UserComponent implements OnInit {
       response => {
         if (response.code === 200) {
           this.posts = response.data.content as Post[];
+          console.log(this.posts);
         }
       }, error => {
         this.handleError(error);
