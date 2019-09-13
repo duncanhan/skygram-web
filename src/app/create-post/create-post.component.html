@@ -12,7 +12,7 @@
         <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="title">
+            <input type="text" class="form-control" formControlName="title" id="title" placeholder="title">
           </div>
           <div class="row">
             <div class="col-md-4">
@@ -24,13 +24,14 @@
           </div>
           <div class="form-group">
             <label for="hashtags">Hashtags</label>
-            <input type="text" class="form-control" name="hashtags" id="hashtags" placeholder="#me,#hope">
+            <input type="text" class="form-control" formControlName="hashtags" id="hashtags" placeholder="#me,#hope">
           </div>
           <div class="form-group">
+            <input type="hidden" class="form-control" formControlName="location" id="location" placeholder="Fairfield, IA" value="Fairfield,Iowa">
             <button class="btn btn-success" type="submit">Post</button>
           </div>
         </form>
-        <div class="alert alert-warning" role="alert" *ngIf="message">
+        <div class="alert" role="alert" *ngIf="message" [ngClass]="{'alert-success': accepted, 'alert-warning': !accepted}">
           {{message}}
         </div>
         <div *ngIf="mediaUrl">
