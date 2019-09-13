@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserDetails(username: string): void {
-    const url = environment.endpoint + '/users/' + username;
+    const url = environment.url + '/users/' + username;
     this.httpClient.get<UserResponse>(url, {headers: this.headers}).subscribe(
       response => {
         if (response.code === 200) {
@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
   }
 
   getUserPosts(username: string): void {
-    const url = environment.endpoint + '/users/' + username + '/posts';
+    const url = environment.url + '/users/' + username + '/posts';
     this.httpClient.get<PostResponse>(url, {headers: this.headers}).subscribe(
       response => {
         if (response.code === 200) {
