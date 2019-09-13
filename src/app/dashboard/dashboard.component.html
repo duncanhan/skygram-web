@@ -8,8 +8,7 @@
 
     <article *ngFor= "let post of posts">
       <div class="post-image">
-        <!-- <img src="assets/img/img-post-1.jpg" alt="post image 1"> -->
-        <img src="{{ post.location }}" alt="{{ post.title }}">
+        <img src="{{ post.media[0].url }}" alt="{{ post.title }}">
       </div>
       <div class="post-text">
         <div id="icons">
@@ -19,12 +18,12 @@
             <i class="far fa-comment fa-3x icon-comments"></i>
           </p>
         </div>
-        <h4>18 likes</h4>
-        <h4><b>john_the_man</b> Can’t wait for the photos of your newborn on facebook</h4>
-        <h4 class="text">View all 56 comments</h4>
+        <h4>{{post.numOfLikes}} likes</h4>
+        <h4><b>{{username}}</b> {{ post.title }}</h4>
+        <h4 class="text">View all {{post.comments.length}} comments</h4>
         <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
         <h4><b>eyesleez</b> i done fucckkked up</h4>
-        <span class="date">{{ post.date | date | timeAgo }}</span>
+        <span class="date">{{ post.posted_date | date | timeAgo }}</span>
       </div>
       <div class="post-info">
         <div class="post-by">Add a comment...</div>

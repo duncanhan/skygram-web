@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../models/post-model';
-import {Router} from '@angular/router';
+import {Params, Router} from '@angular/router';
 import {User} from "../models/user.model";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   wtf: User[]= []; // who to follow
   posts: Post[] = [];
+  username: String;
   headers = new HttpHeaders({
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
@@ -25,7 +26,9 @@ export class DashboardComponent implements OnInit {
     if (localStorage.getItem('token') === null) {
       this.router.navigateByUrl('/login');
     }
+    this.username = localStorage.getItem('username');
     this.getUsers();
+    this.getPosts();
   }
 
   getUsers(): void {
@@ -34,6 +37,19 @@ export class DashboardComponent implements OnInit {
       response => {
         if (response.code === 200) {
           this.wtf = response.data.content as unknown as User[];
+        }
+      }, error => {
+        this.handleError(error);
+      });
+  }
+
+  getPosts(): void {
+    const url = environment.url + '/posts/timeline';
+    this.httpClient.get<PostResponse>(url, {headers: this.headers}).subscribe(
+      response => {
+        console.log(response.data.content);
+        if (response.code === 200) {
+          this.posts = response.data.content as unknown as Post[];
         }
       }, error => {
         this.handleError(error);
