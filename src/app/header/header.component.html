@@ -32,9 +32,13 @@
             <input type="search" class="search-field" placeholder="Search">
             <button type="submit" class="search-btn" hidden><i class="fas fa-search fa2x"></i></button>
             <div class = "toTheRight">
-              <div class = "avatarFrame">
-                <img class = "avatar" src="../../assets/img/avatar2.png">
-              </div>
+                <div class = "avatarFrame dropdown">
+                  <img class = "avatar" src="../../assets/img/avatar2.png">
+                  <div class="dropdown-content">
+                      <a href="#">My page</a>
+                      <a (click)=logOut()>Log out</a>
+                  </div>
+                </div>
             </div>
           </div>
         </form>
