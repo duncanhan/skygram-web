@@ -49,14 +49,12 @@ export class CreatePostComponent implements OnInit {
 
   onSubmit() {
     const formData = new FormData();
-    console.log(this.uploadForm.value);
+    const locArray = ['0.3445','32.4353'];
+    const hashtagArray = this.uploadForm.value.hashtags.split(",");
     formData.append('media', this.uploadForm.value.media);
     formData.append('title', this.uploadForm.value.title);
-    const locArray = ['0.3445','32.4353'];
     formData.append("location",JSON.stringify(locArray).replace(/[\[\]']+/g,''));
-    const hashtagArray = this.uploadForm.value.hashtags.split(",");
     formData.append('hashtags',JSON.stringify(hashtagArray).replace(/[\[\]']+/g,''));
-    console.log(formData);
     this.createPostService.createPost(formData).subscribe(res => {
       console.log(res);
       if(res.code==200){
