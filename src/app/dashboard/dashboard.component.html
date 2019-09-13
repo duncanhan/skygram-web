@@ -78,50 +78,42 @@
     </div>
 
     <div class="widget latest-posts">
+
       <div class="container post-headers">
         <h3 class="col-xs-8 widget-title">Suggestions For You</h3>
         <h3 class="col-xs-4 widget-title-link"><a href="#">See All</a></h3>
       </div>
+
       <div class="posts-container">
 
-        <div class="container post-headers">
-          <div class="item col-xs-8 widget-title-left">
-            <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
-            <div class="info-post">
-              <span><a href="#">Jin Yang</a></span><br>
-              <span class="text">Follows you</span>
-            </div>
-            <div class="clearfix"></div>
+        <div *ngFor= "let user of wtf">
+          <div class="content col-xs-4" *ngFor= "let media of post.medias">
+            <article class="profile-images">
+              <div class="profile-post-image">
+                <img src="{{ media.url }}" alt="{{ post.title }}">
+              </div>
+            </article>
           </div>
-          <h3 class="col-xs-4 widget-title-link widget-title-right follow"><a href="#">Follow</a></h3>
+
+          <div class="container post-headers">
+            <div class="item col-xs-8 widget-title-left">
+              <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
+              <div class="info-post">
+                <span><a href="#">{{user.first_name+user.last_name}}</a></span><br>
+                <span class="text">Follows you</span>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <h3 class="col-xs-4 widget-title-link widget-title-right follow"><a href="#">Follow</a></h3>
+          </div>
+
         </div>
 
-        <div class="container post-headers">
-          <div class="item col-xs-8 widget-title-left">
-            <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
-            <div class="info-post">
-              <span><a href="#">Sergio Perez</a></span><br>
-              <span class="text">Follows you</span>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <h3 class="col-xs-4 widget-title-link widget-title-right"><a href="#">Following</a></h3>
-        </div>
 
-        <div class="container post-headers">
-          <div class="item col-xs-8 widget-title-left">
-            <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
-            <div class="info-post">
-              <span><a href="#">Lewis Hamilton</a></span><br>
-              <span class="text">Suggested</span>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <h3 class="col-xs-4 widget-title-link widget-title-right follow"><a href="#">Follow</a></h3>
-        </div>
 
         <div class="clearfix"></div>
       </div>
+
     </div>
 
   </div>
