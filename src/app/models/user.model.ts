@@ -4,7 +4,11 @@ export class User {
   email: string;
   birthday: Date;
   password: string;
-  firstName: string;
-  lastName: string;
+  // tslint:disable-next-line:variable-name
+  first_name: string;
+  // tslint:disable-next-line:variable-name
+  last_name: string;
   phone: string;
+  followers: User[];
+  followings: User[];
 }

@@ -1,9 +1,29 @@
-import {User} from '../models/user.model';
-
 export interface Post {
-  id: number;
+  id: string;
   title: string;
-  date: Date;
-  location: string;
-  likes: User[];
+  location: Coordinate;
+  comments: Discussion[];
+  likes: Like[],
+  medias: Media[];
+  hashtags: string[];
+  posted_date: Date;
+  last_modified_date: Date;
+}
+
+export interface Coordinate {
+  longitude: string;
+  latitude: string;
+}
+
+// tslint:disable-next-line:no-empty-interface
+export interface Discussion { }
+
+// tslint:disable-next-line:no-empty-interface
+export interface Like { }
+
+export interface Media {
+  id: string;
+  url: string;
+  fileFormat: string;
+  type: string;
 }

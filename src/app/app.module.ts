@@ -12,8 +12,9 @@ import {FooterComponent} from './footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {TimeAgoPipe} from 'time-ago-pipe';
-import { RegistrationComponent } from './registration/registration.component';
-import { CreatePostComponent } from './create-post/create-post.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {CreatePostComponent} from './create-post/create-post.component';
+import {UserComponent} from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     LoginComponent,
     DashboardComponent,
     RegistrationComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
