@@ -5,24 +5,33 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {UserResponse} from '../models/user-response';
 import {PostResponse} from '../models/post-response.model';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html'
 })
 export class UserComponent implements OnInit {
+  username: string;
   user: User;
   posts: Post[];
   headers = new HttpHeaders({
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      if (params.username !== null) {
+        this.username = params.username;
+      } else {
+        this.username = localStorage.getItem('username');
+      }
+    });
+  }
 
   ngOnInit() {
-    const username = localStorage.getItem('username');
-    this.getUserDetails(username);
-    this.getUserPosts(username);
+    this.getUserDetails(this.username);
+    this.getUserPosts(this.username);
   }
 
   onSelect(user: User): void {
