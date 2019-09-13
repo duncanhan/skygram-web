@@ -13,6 +13,7 @@ import {LoginComponent} from './login/login.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { RegistrationComponent } from './registration/registration.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegistrationComponent } from './registration/registration.component';
     FooterComponent,
     LoginComponent,
     DashboardComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
