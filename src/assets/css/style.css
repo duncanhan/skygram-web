@@ -1,6 +1,6 @@
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-  background: #f6f6f6;
+  background: #fafafa;
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -92,24 +92,16 @@ a:hover {
 
 /* 1. HEADER */
 
-.logo-container {
-	margin-top:100px;
-	text-align:center;
+.header-content-area .content img {
+  border-radius:50%;
+  width: 150px;
+  height: 150px;
 }
-.tada-social {
-	margin-top:35px;
-	display:block;
-	text-align:center;
+.header-content-area {
+  margin:0 210px;
+  margin: 0 210px 44px 210px;
 }
-.tada-social a {
-	display:inline-block;
-	color:#333333;
-	padding:12px;
-	text-decoration:none;
-}
-.tada-social a:hover {
-	color:#9c8156;
-}
+
 /* MENU */
 
 nav {
@@ -631,6 +623,12 @@ article {
 }
 .content-area {
   margin:0 210px;
+  border-top:1px solid #efefef;
+}
+.profile-content-area {
+  margin:0 210px;
+  border-top:1px solid #efefef;
+  padding-top: 53px;
 }
 
 /* POST */
@@ -1341,6 +1339,66 @@ footer .widget {
 	color:#858585;
 	letter-spacing:2px;
 }
+
+/* PROFILE */
+.profile {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+.profile-button {
+  padding: 0 12px;
+  display: inline-flex;
+}
+.profile-area span {
+  margin: 0 4px;
+}
+.profile-area button {
+  margin: 0 24px;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26px;
+  outline: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  background-color: #fafafa;
+}
+.profile ul {
+  padding-inline-start: 0;
+}
+.profile ul li {
+  display: inline;
+  font-size: 16px;
+  margin-right: 40px;
+}
+.profile-bottom {
+  display: flex;
+  flex-direction: column;
+}
+.profile-bottom p a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #003569;
+}
+.profile-bottom > a {
+  font-size: 13px;
+  font-weight: lighter;
+  color: #999999;
+}
+.profile-bottom > a span {
+  color: black;
+}
+
 /* RESPONSIVE */
 
 @media screen and (max-width: 1100px) {
