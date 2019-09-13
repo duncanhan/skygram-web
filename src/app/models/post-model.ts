@@ -1,9 +1,10 @@
 export interface Post {
   id: string;
+  author: string;
   title: string;
   location: Coordinate;
   comments: Discussion[];
-  likes: Like[];
+  numOfLikes: number;
   media: Media[];
   hashtags: string[];
   posted_date: Date;
@@ -16,7 +17,13 @@ export interface Coordinate {
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface Discussion { }
+export interface Discussion {
+  id: string;
+  text: string;
+  date: Date;
+  author: string;
+  numOfLikes: number;
+}
 
 // tslint:disable-next-line:no-empty-interface
 export interface Like { }

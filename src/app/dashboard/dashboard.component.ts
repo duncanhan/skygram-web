@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../models/post-model';
-import {Params, Router} from '@angular/router';
-import {User} from "../models/user.model";
-import {environment} from "../../environments/environment";
+import {Router} from '@angular/router';
+import {User} from '../models/user.model';
+import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {PostResponse} from "../models/post-response.model";
+import {PostResponse} from '../models/post-response.model';
 
 @Component({
   selector: 'app-dash',
@@ -13,9 +13,8 @@ import {PostResponse} from "../models/post-response.model";
 })
 export class DashboardComponent implements OnInit {
 
-  wtf: User[]= []; // who to follow
+  wtf: User[] = []; // who to follow
   posts: Post[] = [];
-  username: String;
   headers = new HttpHeaders({
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
@@ -24,9 +23,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('token') === null) {
-      this.router.navigateByUrl('/login');
+      return this.router.navigateByUrl('/login');
     }
-    this.username = localStorage.getItem('username');
     this.getUsers();
     this.getPosts();
   }
@@ -43,23 +41,22 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  handleError(error: string): void {
+    console.log('Could not fetch content from server: ' + JSON.stringify(error));
+  }
+
   getPosts(): void {
     const url = environment.url + '/posts/timeline';
     this.httpClient.get<PostResponse>(url, {headers: this.headers}).subscribe(
       response => {
-        console.log(response.data.content);
         if (response.code === 200) {
-          this.posts = response.data.content as unknown as Post[];
+          this.posts = response.data.content as Post[];
+          console.log(this.posts);
+          console.log(this.posts[0].comments);
         }
       }, error => {
         this.handleError(error);
       });
   }
-
-  handleError(error: string): void {
-    console.log('Could not fetch content from server: ' + JSON.stringify(error));
-  }
-
-  // todo add logic to fetch posts from back end
 
 }

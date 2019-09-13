@@ -6,33 +6,38 @@
 
   <div class="content col-xs-8">
 
-    <article *ngFor= "let post of posts">
-      <div class="post-image">
-        <img src="{{ post.media[0].url }}" alt="{{ post.title }}">
-      </div>
-      <div class="post-text">
-        <div id="icons">
-          <p>
-            <i class="far fa-heart fa-3x"></i>
-            &nbsp;
-            <i class="far fa-comment fa-3x icon-comments"></i>
-          </p>
+    <div *ngFor="let post of posts">
+      <article *ngIf="post?.media.length">
+        <div class="post-image">
+          <img src="{{ post?.media[0]?.url }}" alt="{{ post.title }}">
         </div>
-        <h4>{{post.numOfLikes}} likes</h4>
-        <h4><b>{{username}}</b> {{ post.title }}</h4>
-        <h4 class="text">View all {{post.comments.length}} comments</h4>
-        <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
-        <h4><b>eyesleez</b> i done fucckkked up</h4>
-        <span class="date">{{ post.posted_date | date | timeAgo }}</span>
-      </div>
-      <div class="post-info">
-        <div class="post-by">Add a comment...</div>
-        <div class="extra-info">
-          Post
+        <div class="post-text">
+          <div id="icons">
+            <p>
+              <i class="far fa-heart fa-3x"></i>
+              &nbsp;
+              <i class="far fa-comment fa-3x icon-comments"></i>
+            </p>
+          </div>
+          <h4>{{ post.numOfLikes }} likes</h4>
+          <h4><b>{{ post?.author }}</b> {{ post?.title }}</h4>
+          <div *ngIf="post.comments.length > 0">
+            <h4 class="text" *ngIf="post.comments.length > 2">View all {{ post.comments.length }} comments</h4>
+            <h4 *ngFor="let comment of post.comments;  let i = index">
+              <div *ngIf="i < 2"><b>{{ comment.author }}</b> {{ comment.text }}</div>
+            </h4>
+          </div>
+          <span class="date">{{ post.posted_date | date | timeAgo }}</span>
         </div>
-        <div class="clearfix"></div>
-      </div>
-    </article>
+        <div class="post-info">
+          <div class="post-by">Add a comment...</div>
+          <div class="extra-info">
+            Post
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </article>
+    </div>
 
   </div>
 
