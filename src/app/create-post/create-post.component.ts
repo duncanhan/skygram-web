@@ -9,6 +9,8 @@ import { CreatePostService } from './create-post.service';
 })
 export class CreatePostComponent implements OnInit {
   uploadForm: FormGroup;
+  mediaUrl: any;
+  message: any;
 
   constructor(private formBuilder: FormBuilder, private createPostService: CreatePostService) { }
 
@@ -17,14 +19,28 @@ export class CreatePostComponent implements OnInit {
       media: [''],
       title: [''],
       location: [''],
-      hashtag: ['']
+      hashtags: ['']
     });
   }
 
   onFileSelect(event) {
     if (event.target.files.length > 0) {
+      this.mediaUrl = null;
+      this.message = null;
       const file = event.target.files[0];
       this.uploadForm.get('media').setValue(file);
+
+      var mimeType = file.type;
+      if (mimeType.match(/image\/*/) == null && mimeType.match(/video\/*/) == null) {
+        this.message = "Only images are supported.";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.mediaUrl = reader.result;
+      }
     }
   }
 
