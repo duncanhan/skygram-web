@@ -33,11 +33,11 @@
   <div class="profile-content-area">
 
     <div *ngFor= "let post of posts">
-      <div class="content col-xs-4" *ngFor= "let media of post.medias">
+      <div class="content col-xs-4" *ngFor= "let medium of post.media">
 
         <article class="profile-images">
           <div class="profile-post-image">
-            <img src="{{ media.url }}" alt="{{ post.title }}">
+            <img src="{{ medium.url }}" alt="{{ post.title }}">
           </div>
         </article>
 
