@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
 <app-create-post></app-create-post>
 <section class="tada-container content-posts">
 
@@ -14,15 +14,52 @@
         <div class="post-text">
           <div id="icons">
             <p>
-              <i class="far fa-heart fa-3x"></i>
+              <i class="far fa-heart fa-2x animated bounce" [ngClass]="{'text-success':post.is_liked}" (click)="like(post, $event)"></i>
               &nbsp;
-              <i class="far fa-comment fa-3x icon-comments"></i>
+              <i class="far fa-comment fa-2x icon-comments animated bounce delay-1s"></i>
             </p>
           </div>
-          <h4>{{ post.numOfLikes }} likes</h4>
+          <h4>{{ post.num_of_likes }} likes</h4>
           <h4><b>{{ post?.author }}</b> {{ post?.title }}</h4>
           <div *ngIf="post.comments.length > 0">
-            <h4 class="text" *ngIf="post.comments.length > 2">View all {{ post.comments.length }} comments</h4>
+
+            <div *ngIf="post.comments.length > 2">
+              <h4 class="text" data-toggle="modal" attr.data-target="#{{post.id}}">View all {{ post.comments.length }} comments</h4>
+              <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 80%; margin: 10% auto" role="document">
+                  <div class="modal-content">
+                    <i class="fas fa-trash fa-2x" style="text-align: right; margin-right: 10px; margin-top: 10px" (click) = deletePost(post.id)></i>
+                    <div class="modal-body">
+                      <div class="col-sm-4">
+                        <img src="{{ post?.media[0]?.url }}" alt="{{ post.title }}">
+                      </div>
+                      <div class="col-sm-8">
+                        <div>
+                          <h2>{{post.title}}</h2>
+                        </div>
+                        <div class="post-text" style="text-align:left">
+                          <p>
+                            <i class="far fa-heart fa-3x  animated bounce" (click)="like(post, $event)"></i>
+                            &nbsp;
+                            <i class="far fa-comment fa-3x icon-comments animated bounce delay-1s"></i>
+                          </p>
+                          <h4>{{post.num_of_likes}} likes</h4>
+                          <h4><b>{{username}}</b> {{ post.title }}</h4>
+                          <div *ngIf="post.comments.length > 0">
+                            <h4 *ngFor="let comment of post.comments;  let i = index">
+                              <div *ngIf="i < 2"><b>{{ comment.author }}</b> {{ comment.text }}</div>
+                            </h4>
+                          </div>
+                          <span class="date">{{ post.posted_date | date | timeAgo }}</span>
+                          <input type="text" placeholder="Say something..." style="float: left; border: none; font-size: 18px;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <h4 *ngFor="let comment of post.comments;  let i = index">
               <div *ngIf="i < 2"><b>{{ comment.author }}</b> {{ comment.text }}</div>
             </h4>
@@ -92,16 +129,16 @@
 
         <div *ngFor= "let user of wtf">
 
-          <div class="container post-headers">
+          <div class="container post-headers" *ngIf="!user.followed">
             <div class="item col-xs-8 widget-title-left">
-              <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
+              <img src="https://ui-avatars.com/api/?name={{user.username}}&background=FF4081&color=fff&uppercase=false" alt="post 1" class="post-image">
               <div class="info-post">
                 <span><a href="user/{{user.username}}">{{user.username}}</a></span><br>
-                <span class="text">Follows you</span>
+                <span class="text" *ngIf="user.is_following">Follows you</span>
               </div>
               <div class="clearfix"></div>
             </div>
-            <h3 class="col-xs-4 widget-title-link widget-title-right follow" (click)="follow(user.username)"><a>Follow</a></h3>
+            <h3 class="col-xs-4 widget-title-link widget-title-right follow" (click)="follow(user.username,$event)"><a>Follow</a></h3>
           </div>
 
         </div>

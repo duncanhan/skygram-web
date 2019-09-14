@@ -60,14 +60,36 @@ export class DashboardComponent implements OnInit {
     console.log('Could not fetch content from server: ' + JSON.stringify(error));
   }
 
-  follow(username) {
-    const url = environment.url + '/users/' + username + '/follow';
+  follow(username, event) {
+    const target = event.target || event.srcElement || event.currentTarget;
+    const idAttr = target.attributes.id;
+    const url = environment.url + '/users/' + username + "/follow";
     this.httpClient.post<any>(url, [], {headers: this.headers}).subscribe(
       response => {
         console.log(response);
         if (response.code === 200) {
           console.log(response.message);
+          event.srcElement.innerHTML="Followed";
+          target.classList.add("text-success");
+        }
+      },
+      error => {
+        this.handleError(error);
+      });
+  }
 
+  like(post,event){
+    const target = event.target || event.srcElement || event.currentTarget;
+    console.log(event);
+    const url = environment.url + '/posts/' + post.id + "/like";
+    this.httpClient.post<any>(url, [], {headers: this.headers}).subscribe(
+      response => {
+        console.log(response);
+        if (response.code === 200) {
+          console.log(response.message);
+          target.classList.add("text-success");
+          target.style["pointer-events"] ="none";
+          post.numOfLikes+=1;
         }
       },
       error => {

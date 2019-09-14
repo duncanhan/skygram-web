@@ -6,10 +6,13 @@ import {environment} from '../../environments/environment';
 import {UserResponse} from '../models/user-response';
 import {PostResponse} from '../models/post-response.model';
 import {ActivatedRoute, Params} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html'
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
   username: string;
@@ -19,7 +22,7 @@ export class UserComponent implements OnInit {
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
 
-  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute, private alert: ToastrService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -55,6 +58,54 @@ export class UserComponent implements OnInit {
           console.log(this.posts);
         }
       }, error => {
+        this.handleError(error);
+      });
+  }
+
+  deletePost(postId: string): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Post will be deleted!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.httpClient.delete(environment.url + '/posts/' + postId, {headers: this.headers}).subscribe(
+          res => {
+            Swal.fire(
+              'Deleted!',
+              'Your post has been deleted.',
+              'success'
+            ).then(() => location.reload());
+          }, err => {
+            Swal.fire(
+              'Failed!',
+              err.error.message,
+              'warning'
+            );
+          });
+      }
+    });
+  }
+
+  like(post,event){
+    const target = event.target || event.srcElement || event.currentTarget;
+    console.log(event);
+    const url = environment.url + '/posts/' + post.id + "/like";
+    this.httpClient.post<any>(url, [], {headers: this.headers}).subscribe(
+      response => {
+        console.log(response);
+        if (response.code === 200) {
+          console.log(response.message);
+          target.classList.add("text-success");
+          target.style["pointer-events"] ="none";
+          post.numOfLikes+=1;
+        }
+      },
+      error => {
         this.handleError(error);
       });
   }
