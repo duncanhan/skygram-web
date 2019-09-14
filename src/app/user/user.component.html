@@ -9,7 +9,7 @@
         <div class="modal-dialog" >
           <div class="modal-content">
             <div class="modal-body">
-              <p>dfsgdfgsdfgsdf</p>
+              <p>Upload the photo in here</p>
             </div>
           </div>
         </div>
@@ -69,12 +69,15 @@
                             </p>
                           <h4>{{post.numOfLikes}} likes</h4>
                           <h4><b>{{username}}</b> {{ post.title }}</h4>
+
+                          <div *ngIf="post.comments.length > 0">
+                            <h4 class="text" *ngIf="post.comments.length > 2">View all {{ post.comments.length }} comments</h4>
+                            <h4 *ngFor="let comment of post.comments;  let i = index">
+                              <div *ngIf="i < 2"><b>{{ comment.author }}</b> {{ comment.text }}</div>
+                            </h4>
+                          </div>
                           <span class="date">{{ post.posted_date | date | timeAgo }}</span>
-                          <h4 class="text">View all {{post.comments.length}} comments</h4>
-                            <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
-                            <h4><b>eyesleez</b> i done fucckkked up</h4>
-                            <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
-                            <h4><b>eyesleez</b> i done fucckkked up</h4>
+                          
                           <input type="text" placeholder="Say something..." style="float: left; border: none; font-size: 18px;">
                         </div>
                       </div>
