@@ -102,6 +102,7 @@ export class DashboardComponent implements OnInit {
   onSubmit(postId: string) {
     const url = `${environment.url}/posts/${postId}/comments`;
     this.element = document.getElementById(`${postId}`);
+    // @ts-ignore
     const comment = this.element.value;
     this.httpClient.post<any>(url, {text: comment}, {headers: this.headers}).subscribe(response => {
       if (response.code === 200) {
@@ -110,6 +111,7 @@ export class DashboardComponent implements OnInit {
     }, error => {
       this.handleError(error);
     });
+    // @ts-ignore
     this.element.value = '';
   }
 
