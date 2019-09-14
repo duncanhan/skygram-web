@@ -19,7 +19,7 @@
               <i class="far fa-comment fa-2x icon-comments animated bounce delay-1s"></i>
             </p>
           </div>
-          <h4>{{ post.numOfLikes }} likes</h4>
+          <h4>{{ post.num_of_likes }} likes</h4>
           <h4><b>{{ post?.author }}</b> {{ post?.title }}</h4>
           <div *ngIf="post.comments.length > 0">
 
@@ -43,7 +43,7 @@
                             &nbsp;
                             <i class="far fa-comment fa-3x icon-comments animated bounce delay-1s"></i>
                           </p>
-                          <h4>{{post.numOfLikes}} likes</h4>
+                          <h4>{{post.num_of_likes}} likes</h4>
                           <h4><b>{{username}}</b> {{ post.title }}</h4>
                           <div *ngIf="post.comments.length > 0">
                             <h4 *ngFor="let comment of post.comments;  let i = index">
