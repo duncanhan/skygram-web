@@ -49,44 +49,44 @@
         <article class="profile-images">
           <div class="profile-post-image">
             <img src="{{ medium.url }}" alt="{{ post.title }}" data-toggle="modal" attr.data-target="#{{post.id}}">
-
-            <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
-              <div class="modal-dialog" style="max-width: 80%; margin: 10% auto" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <div class="col-sm-6">
-                      <img src="{{ medium.url }}" alt="{{ post.title }}">
-                    </div>
-                    <div class="col-sm-6">
-                      <div>
-                        <h2>{{post.title}}</h2>
+              <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 80%; margin: 10% auto" role="document">
+                  <div class="modal-content">
+                    <i class="fas fa-trash fa-2x" style="text-align: right; margin-right: 10px; margin-top: 10px" (click) = deletePost(post.id)></i>
+                    <div class="modal-body">
+                      <div class="col-sm-4">
+                        <img src="{{ medium.url }}" alt="{{ post.title }}">
                       </div>
-                      <div class="post-text" style="text-align:left">
-                        <p>
-                          <i class="far fa-heart fa-3x"></i>
-                          <i class="far fa-comment fa-3x icon-comments"></i>
-                        </p>
-                        <h4>{{post.numOfLikes}} likes</h4>
-                        <h4><b>{{username}}</b> {{ post.title }}</h4>
-                        <span class="date">{{ post.posted_date | date | timeAgo }}</span>
-                        <h4 class="text">View all {{post.comments.length}} comments</h4>
-                        <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
-                        <h4><b>eyesleez</b> i done fucckkked up</h4>
-                        <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
-                        <h4><b>eyesleez</b> i done fucckkked up</h4>
-                        <input type="text" placeholder="Say something..." style="float: left; border: none; font-size: 18px;">
+                      <div class="col-sm-8">
+                        <div>
+                          <h2>{{post.title}}</h2>
+                        </div>
+                        <div class="post-text" style="text-align:left">
+                            <p>
+                              <i class="far fa-heart fa-3x"></i>
+                              &nbsp;
+                              <i class="far fa-comment fa-3x icon-comments"></i>
+                            </p>
+                          <h4>{{post.numOfLikes}} likes</h4>
+                          <h4><b>{{username}}</b> {{ post.title }}</h4>
+                          <span class="date">{{ post.posted_date | date | timeAgo }}</span>
+                          <h4 class="text">View all {{post.comments.length}} comments</h4>
+                            <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
+                            <h4><b>eyesleez</b> i done fucckkked up</h4>
+                            <h4><b>samara_mth</b> ooohh jaaa und dass ist noch dass geringste Problem dort</h4>
+                            <h4><b>eyesleez</b> i done fucckkked up</h4>
+                          <input type="text" placeholder="Say something..." style="float: left; border: none; font-size: 18px;">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
+          </article>
           </div>
-        </article>
 
       </div>
     </div>
 
-  </div>
 </section>

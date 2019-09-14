@@ -6,6 +6,8 @@ import {environment} from '../../environments/environment';
 import {UserResponse} from '../models/user-response';
 import {PostResponse} from '../models/post-response.model';
 import {ActivatedRoute, Params} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +22,7 @@ export class UserComponent implements OnInit {
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
 
-  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) { }
+  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute, private alert: ToastrService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -58,6 +60,35 @@ export class UserComponent implements OnInit {
       }, error => {
         this.handleError(error);
       });
+  }
+
+  deletePost(postId: string): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Post will be deleted!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.httpClient.delete(environment.url + '/posts/' + postId, {headers: this.headers}).subscribe(
+          res => {
+            Swal.fire(
+              'Deleted!',
+              'Your post has been deleted.',
+              'success'
+            ).then(() => location.reload());
+          }, err => {
+            Swal.fire(
+              'Failed!',
+              err.error.message,
+              'warning'
+            );
+          });
+      }
+    });
   }
 
   handleError(error: string): void {
