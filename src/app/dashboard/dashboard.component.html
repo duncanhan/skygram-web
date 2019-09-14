@@ -129,12 +129,12 @@
 
         <div *ngFor= "let user of wtf">
 
-          <div class="container post-headers" *ngIf="!user.followed">
+          <div class="container post-headers" *ngIf="!user.is_following">
             <div class="item col-xs-8 widget-title-left">
               <img src="https://ui-avatars.com/api/?name={{user.username}}&background=FF4081&color=fff&uppercase=false" alt="post 1" class="post-image">
-              <div class="info-post">
+              <div class="info-post" >
                 <span><a href="user/{{user.username}}">{{user.username}}</a></span><br>
-                <span class="text" *ngIf="user.is_following">Follows you</span>
+                <span class="text" *ngIf="user.followed">Follows you</span>
               </div>
               <div class="clearfix"></div>
             </div>
