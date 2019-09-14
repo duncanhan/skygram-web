@@ -54,7 +54,7 @@ export class CreatePostComponent implements OnInit {
     formData.append('media', this.uploadForm.value.media);
     formData.append('title', this.uploadForm.value.title);
     formData.append("location",JSON.stringify(locArray));
-    formData.append('hashtags',JSON.stringify(hashtagArray));
+    formData.append('hashtags',encodeURIComponent(JSON.stringify(hashtagArray)));
     this.createPostService.createPost(formData).subscribe(res => {
       console.log(res);
       if(res.code==200){
