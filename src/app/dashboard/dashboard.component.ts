@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
       response => {
         if (response.code === 200) {
           this.wtf = response.data.content as unknown as User[];
+          console.log(this.wtf);
         }
       }, error => {
         this.handleError(error);
