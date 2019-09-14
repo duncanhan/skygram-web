@@ -14,9 +14,9 @@
         <div class="post-text">
           <div id="icons">
             <p>
-              <i class="far fa-heart fa-3x  animated bounce"></i>
+              <i class="far fa-heart fa-2x  animated bounce" (click)="like(post, $event)"></i>
               &nbsp;
-              <i class="far fa-comment fa-3x icon-comments"></i>
+              <i class="far fa-comment fa-2x icon-comments"></i>
             </p>
           </div>
           <h4>{{ post.numOfLikes }} likes</h4>
@@ -101,7 +101,7 @@
               </div>
               <div class="clearfix"></div>
             </div>
-            <h3 class="col-xs-4 widget-title-link widget-title-right follow" (click)="follow(user.username)"><a>Follow</a></h3>
+            <h3 class="col-xs-4 widget-title-link widget-title-right follow" (click)="follow(user.username,$event)"><a>Follow</a></h3>
           </div>
 
         </div>
