@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
         if (response.code === 200) {
           this.posts = response.data.content as Post[];
           console.log(this.posts);
-          console.log(this.posts[0].comments);
+          //console.log(this.posts[0].comments);
         }
       }, error => {
         this.handleError(error);

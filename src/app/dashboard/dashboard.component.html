@@ -20,7 +20,7 @@
             </p>
           </div>
           <h4>{{ post.num_of_likes }} likes</h4>
-          <h4><b>{{ post?.author }}</b> {{ post?.title }}</h4>
+          <h4><b>{{ post?.author?.username }}</b> {{ post?.title }}</h4>
           <div *ngIf="post.comments.length > 0">
 
             <div *ngIf="post.comments.length > 2">
@@ -47,7 +47,7 @@
                           <h4><b>{{username}}</b> {{ post.title }}</h4>
                           <div *ngIf="post.comments.length > 0">
                             <h4 *ngFor="let comment of post.comments;  let i = index">
-                              <div *ngIf="i < 2"><b>{{ comment.author }}</b> {{ comment.text }}</div>
+                              <div *ngIf="i < 2"><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
                             </h4>
                           </div>
                           <span class="date">{{ post.posted_date | date | timeAgo }}</span>
@@ -61,7 +61,7 @@
             </div>
 
             <h4 *ngFor="let comment of post.comments;  let i = index">
-              <div *ngIf="i < 2"><b>{{ comment.author }}</b> {{ comment.text }}</div>
+              <div *ngIf="i < 2"><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
             </h4>
           </div>
           <span class="date">{{ post.posted_date | date | timeAgo }}</span>

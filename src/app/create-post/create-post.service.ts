@@ -10,9 +10,7 @@ import { environment } from '../../environments/environment'
 })
 export class CreatePostService {
   httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Headers' : '*'
-    }).set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    headers: new HttpHeaders({}).set('Authorization', 'Bearer ' + localStorage.getItem('token'))
   };
 
   constructor(private httpClient: HttpClient) { }
