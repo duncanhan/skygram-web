@@ -91,6 +91,25 @@ export class UserComponent implements OnInit {
     });
   }
 
+  like(post,event){
+    const target = event.target || event.srcElement || event.currentTarget;
+    console.log(event);
+    const url = environment.url + '/posts/' + post.id + "/like";
+    this.httpClient.post<any>(url, [], {headers: this.headers}).subscribe(
+      response => {
+        console.log(response);
+        if (response.code === 200) {
+          console.log(response.message);
+          target.classList.add("text-success");
+          target.style["pointer-events"] ="none";
+          post.numOfLikes+=1;
+        }
+      },
+      error => {
+        this.handleError(error);
+      });
+  }
+
   handleError(error: string): void {
     console.log('Could not fetch content from server: ' + JSON.stringify(error));
   }
