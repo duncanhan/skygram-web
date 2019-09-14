@@ -1,6 +1,52 @@
 .content-area{
-  margin-bottom: 50px;
+  margin:0 210px 50px 210px;
 }
 button.btn.btn-info.btn-lg{
   float: right;
+}
+form {
+  width: 100%;
+}
+.post-info {
+  background:#FFF;
+  padding:0px 16px;
+  margin-top:2px;
+  border-radius:0 0 4px 4px;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+  position: relative;
+}
+.post-area {
+  float: left;
+  background: 0 0;
+  border: 0;
+  color: #262626;
+  font-size: 14px;
+  outline: 0;
+  resize: none;
+  height: 56px;
+  max-height: 80px;
+}
+textarea {
+  width:92%;
+  vertical-align: middle;
+}
+.extra-info {
+  float:right;
+}
+.extra-info a {
+  padding:10px;
+  color:#858585;
+}
+.extra-info a:hover {
+  color:#9c8156;
+}
+.extra-info .comments {
+  padding-left:10px;
+  color:#858585;
+}
+.extra-info .comments i {
+  color:#9c8156;
+  margin-left:3px;
 }

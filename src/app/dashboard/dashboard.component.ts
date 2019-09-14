@@ -15,10 +15,11 @@ export class DashboardComponent implements OnInit {
 
   wtf: User[] = []; // who to follow
   posts: Post[] = [];
-  username: String;
+  username: string;
   headers = new HttpHeaders({
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
+  element: HTMLElement;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -49,8 +50,6 @@ export class DashboardComponent implements OnInit {
       response => {
         if (response.code === 200) {
           this.posts = response.data.content as Post[];
-          console.log(this.posts);
-          console.log(this.posts[0].comments);
         }
       }, error => {
         this.handleError(error);
@@ -62,7 +61,7 @@ export class DashboardComponent implements OnInit {
   }
 
   follow(username) {
-    const url = environment.url + '/users/' + username + "/follow";
+    const url = environment.url + '/users/' + username + '/follow';
     this.httpClient.post<any>(url, [], {headers: this.headers}).subscribe(
       response => {
         console.log(response);
@@ -74,6 +73,20 @@ export class DashboardComponent implements OnInit {
       error => {
         this.handleError(error);
       });
+  }
+
+  onSubmit(postId: string) {
+    const url = `${environment.url}/posts/${postId}/comments`;
+    this.element = document.getElementById(`${postId}`);
+    const comment = this.element.value;
+    this.httpClient.post<any>(url, {text: comment}, {headers: this.headers}).subscribe(response => {
+      if (response.code === 200) {
+        console.log(response);
+      }
+    }, error => {
+      this.handleError(error);
+    });
+    this.element.value = '';
   }
 
 }

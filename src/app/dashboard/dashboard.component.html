@@ -30,11 +30,11 @@
           <span class="date">{{ post.posted_date | date | timeAgo }}</span>
         </div>
         <div class="post-info">
-          <div class="post-by">Add a comment...</div>
-          <div class="extra-info">
-            Post
-          </div>
-          <div class="clearfix"></div>
+          <form class="comment-div">
+            <textarea class="post-area" placeholder="Add a comment..." name="{{ post.id }}" id="{{ post.id }}" value=""></textarea>
+            <button (click)="onSubmit(post.id)">Post</button>
+            <div class="clearfix"></div>
+          </form>
         </div>
       </article>
     </div>

@@ -128,7 +128,7 @@ nav ul > li a {
 }
 nav li a {
 	color:#333;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 nav li {
 	position:relative;
@@ -233,7 +233,7 @@ nav li:hover > ul.submenu > li:hover > ul.submenu {
 }
 .menu-responsive li a {
 	color:#333;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 .menu-responsive li {
 	position:relative;
@@ -397,7 +397,7 @@ nav.sticky li:hover ul.submenu {
 	margin-top:60px;
 	color:#000;
 	font-size:18px;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 .tada-text-container .button a:hover {
 	color:#9c8156;
@@ -479,7 +479,7 @@ article {
 	color:#c0c0c0;
 	text-transform:uppercase;
 	font-size:10px;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 .post-text h2 {
 	margin:12px 0 24px 0;
@@ -516,44 +516,6 @@ article {
 	font-size:11px;
 	margin-left:5px;
 }
-.post-by {
-	color: #858585;
-    float: left;
-    font-size: 12px;
-    letter-spacing: 2px;
-    line-height: 1;
-}
-.post-by a {
-	text-transform:uppercase;
-	color:#9c8156;
-}
-.post-by a:hover {
-	color:#6d593d;
-}
-.extra-info {
-	float:right;
-}
-.extra-info a {
-	padding:10px;
-	color:#858585;
-}
-.extra-info a:hover {
-	color:#9c8156;
-}
-.extra-info .comments {
-	padding-left:10px;
-	color:#858585;
-}
-.extra-info .comments i {
-	color:#9c8156;
-	margin-left:3px;
-}
-.post-info {
-	background:#FFF;
-	padding:18px 50px;
-	margin-top:2px;
-	border-radius:0 0 4px 4px;
-}
 .navigation a {
 	padding:15px 28px;
 	font-size:10px;
@@ -561,7 +523,7 @@ article {
 	border-radius:6px;
 	text-transform:uppercase;
 	color:#858585;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 .navigation a:hover {
 	color:#9c8156;
@@ -594,9 +556,6 @@ article {
 .blog-2-columns .post-text .text {
 	text-align:center;
 }
-.blog-2-columns .post-by {
-	float:none;
-}
 .blog-2-columns-sidebar .col-xs-6:nth-child(1n) {
 	padding-left:0;
 }
@@ -623,9 +582,6 @@ article {
 }
 .blog-3-columns .post-text {
 	padding:25px;
-}
-.blog-3-columns .post-by {
-	float:none;
 }
 .content-area {
   margin:0 210px;
@@ -795,7 +751,7 @@ ul.bullet {
 	border-radius:10px;
 	text-transform:uppercase;
 	color:#858585;
-	letter-spacing:2px;
+	letter-spacing:1px;
 	border:1px solid #f6f6f6;
 }
 .navigation-post .prev {
@@ -1204,7 +1160,7 @@ ul.bullet {
   color:#c0c0c0;
   text-transform:uppercase;
   font-size:10px;
-  letter-spacing:2px;
+  letter-spacing:1px;
 }
 
 /* ABOUT US */
@@ -1339,13 +1295,13 @@ footer .widget {
 .footer-bottom .copyright {
 	float:left;
 	color:#858585;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 .footer-bottom .backtotop {
 	float:right;
 	cursor:pointer;
 	color:#858585;
-	letter-spacing:2px;
+	letter-spacing:1px;
 }
 
 /* PROFILE */
