@@ -41,11 +41,12 @@
               <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
                 <div class="modal-dialog" style="max-width: 80%; margin: 10% auto" role="document">
                   <div class="modal-content">
+                    <i class="fas fa-trash fa-2x" style="text-align: right; margin-right: 10px; margin-top: 10px" (click) = deletePost(post.id)></i>
                     <div class="modal-body">
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
                         <img src="{{ medium.url }}" alt="{{ post.title }}">
                       </div>
-                      <div class="col-sm-6">
+                      <div class="col-sm-8">
                         <div>
                           <h2>{{post.title}}</h2>
                         </div>
