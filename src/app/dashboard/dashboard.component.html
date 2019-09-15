@@ -62,7 +62,7 @@
         </div>
         <div class="post-info">
           <form class="comment-div">
-            <textarea class="post-area" placeholder="Add a comment..." name="{{ post.id }}" id="{{ post.id }}" value=""></textarea>
+            <textarea class="post-area" placeholder="Add a comment..." id="comment{{ post.id }}" value=""></textarea>
             <button (click)="onSubmit(post.id)">Post</button>
             <div class="clearfix"></div>
           </form>

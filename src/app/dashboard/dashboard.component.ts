@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
 
   onSubmit(postId: string) {
     const url = `${environment.url}/posts/${postId}/comments`;
-    this.element = document.getElementById(`${postId}`);
+    this.element = document.getElementById(`comment${postId}`);
     // @ts-ignore
     const comment = this.element.value;
     this.httpClient.post<any>(url, {text: comment}, {headers: this.headers}).subscribe(response => {
