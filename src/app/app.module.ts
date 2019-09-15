@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -15,6 +16,9 @@ import {TimeAgoPipe} from 'time-ago-pipe';
 import {RegistrationComponent} from './registration/registration.component';
 import {CreatePostComponent} from './create-post/create-post.component';
 import {UserComponent} from './user/user.component';
+import { ReportingComponent } from './reporting/reporting.component';
+import { UsersComponent } from './reporting/users/users.component';
+import { PostsComponent } from './reporting/posts/posts.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
 
 @NgModule({
@@ -27,8 +31,7 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
     DashboardComponent,
     RegistrationComponent,
     CreatePostComponent,
-    UserComponent,
-    CommentBoxComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
