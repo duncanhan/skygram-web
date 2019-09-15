@@ -1,0 +1,8 @@
+  <h4 *ngFor="let comment of post.comments;  let i = index">
+    <div ><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
+  </h4>
+
+<form class="comment-div" (keydown)="onSubmit(post.id, $event)">
+  <textarea class="post-area" placeholder="Add a comment..." name="{{ post.id }}" id="{{ post.id }}comment-area" value=""></textarea>
+  <div class="clearfix"></div>
+</form>

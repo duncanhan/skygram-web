@@ -45,13 +45,7 @@
                           </p>
                           <h4>{{post.num_of_likes}} likes</h4>
                           <h4><b>{{username}}</b> {{ post.title }}</h4>
-                          <div *ngIf="post.comments.length > 0">
-                            <h4 *ngFor="let comment of post.comments;  let i = index">
-                              <div *ngIf="i < 2"><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
-                            </h4>
-                          </div>
-                          <span class="date">{{ post.posted_date | date | timeAgo }}</span>
-                          <input type="text" placeholder="Say something..." style="float: left; border: none; font-size: 18px;">
+                          <app-comment-box [postId] = "post.id"></app-comment-box>
                         </div>
                       </div>
                     </div>
@@ -61,7 +55,7 @@
             </div>
 
             <h4 *ngFor="let comment of post.comments;  let i = index">
-              <div *ngIf="i < 2"><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
+              <div *ngIf="i > post.comments.length - 3"><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
             </h4>
           </div>
           <span class="date">{{ post.posted_date | date | timeAgo }}</span>
