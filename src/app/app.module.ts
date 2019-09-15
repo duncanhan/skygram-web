@@ -31,7 +31,11 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
     DashboardComponent,
     RegistrationComponent,
     CreatePostComponent,
-    UserComponent
+    UserComponent,
+    ReportingComponent,
+    CommentBoxComponent,
+    UsersComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
