@@ -15,6 +15,7 @@ import {TimeAgoPipe} from 'time-ago-pipe';
 import {RegistrationComponent} from './registration/registration.component';
 import {CreatePostComponent} from './create-post/create-post.component';
 import {UserComponent} from './user/user.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {UserComponent} from './user/user.component';
     DashboardComponent,
     RegistrationComponent,
     CreatePostComponent,
-    UserComponent
+    UserComponent,
+    CommentBoxComponent
   ],
   imports: [
     BrowserModule,
