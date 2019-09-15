@@ -1,6 +1,6 @@
 export interface Post {
   id: string;
-  author: string;
+  author: Object;
   title: string;
   location: Coordinate;
   comments: Discussion[];
@@ -23,7 +23,7 @@ export interface Discussion {
   id: string;
   text: string;
   date: Date;
-  author: string;
+  author: Object;
   num_of_likes: number;
 }
 
