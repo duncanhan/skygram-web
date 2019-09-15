@@ -8,6 +8,12 @@
 
     <div *ngFor="let post of posts">
       <article *ngIf="post?.media.length">
+
+        <div class="posts-container post-head">
+          <img src="assets/img/latest-posts-1.jpg" class="post-image">
+          <b class="post-head-text">{{ post?.author?.username }}</b><br>
+        </div>
+
         <div class="post-image">
           <img src="{{ post?.media[0]?.url }}" alt="{{ post.title }}">
         </div>
