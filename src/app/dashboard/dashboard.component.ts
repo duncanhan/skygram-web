@@ -107,6 +107,7 @@ export class DashboardComponent implements OnInit {
     this.httpClient.post<any>(url, {text: comment}, {headers: this.headers}).subscribe(response => {
       if (response.code === 200) {
         console.log(response);
+        this.getPosts();
       }
     }, error => {
       this.handleError(error);
