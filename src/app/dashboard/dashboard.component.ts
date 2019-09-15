@@ -92,6 +92,7 @@ export class DashboardComponent implements OnInit {
           target.classList.add("text-success");
           target.style["pointer-events"] ="none";
           post.numOfLikes+=1;
+          this.getPosts();
         }
       },
       error => {

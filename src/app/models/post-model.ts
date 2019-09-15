@@ -4,11 +4,13 @@ export interface Post {
   title: string;
   location: Coordinate;
   comments: Discussion[];
-  numOfLikes: number;
+  num_of_likes: number;
   media: Media[];
   hashtags: string[];
   posted_date: Date;
   last_modified_date: Date;
+  username: string;
+  is_liked: boolean;
 }
 
 export interface Coordinate {
@@ -22,7 +24,7 @@ export interface Discussion {
   text: string;
   date: Date;
   author: string;
-  numOfLikes: number;
+  num_of_likes: number;
 }
 
 // tslint:disable-next-line:no-empty-interface

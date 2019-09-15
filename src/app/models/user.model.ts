@@ -9,6 +9,8 @@ export class User {
   // tslint:disable-next-line:variable-name
   last_name: string;
   phone: string;
-  numOfFollowers: number;
-  numOfFollowings: number;
+  num_of_followers: number;
+  num_of_followings: number;
+  followed: boolean;
+  is_following: boolean;
 }
