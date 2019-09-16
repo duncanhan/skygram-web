@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/dashboard');
       }
     }, err => {
-        this.alert.error('Username or password was wrong!');
+        this.alert.error(err.error.message);
     });
   }
 }
