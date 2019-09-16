@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Packaging with Docker
+run  docker build -f Dockerfile -t skygram-web:prod .
+
+## Running the docker image
+
+run docker run -it -p 80:4200 --rm skygram-web:prod
+
+# Push Docker image 
+sudo docker push $DOCKER_ACC/$DOCKER_REPO:$IMG_TAG
+

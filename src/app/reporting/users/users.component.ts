@@ -43,6 +43,9 @@ export class UsersComponent implements OnInit {
             this.postsData.push(data[i].num_of_posts);
             this.lables.push(data[i].date);
           }
+          let clone = JSON.parse(JSON.stringify(this.daysUsersAndPostsChartData));
+          clone[0].data = data;
+          this.daysUsersAndPostsChartData = clone;
         }
       }, error => {
         this.handleError(error);
