@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -14,14 +14,14 @@ export class UsersComponent implements OnInit {
     Authorization: 'Bearer ' + localStorage.getItem('token')
   });
 
-  public usersData = [1, 0, 2, 1, 0, 3, 0];
-  public postsData = [5, 10, 17, 6, 10, 4, 20];
-  public lables = ['2019-09-10', '2019-09-10', '2019-09-10', '2019-09-10', '2019-09-10', '2019-09-10', '2019-09-10'];
+  usersData = [];
+  postsData = [];
+  lables = [];
 
   constructor(private httpClient: HttpClient,private formBuilder: FormBuilder) {
-    this.lables = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    this.usersData = [65, 59, 80, 81, 56, 55, 40];
-    this.postsData = [28, 48, 40, 19, 86, 27, 90];
+    // this.lables = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    // this.usersData = [65, 59, 80, 81, 56, 55, 40];
+    // this.postsData = [28, 48, 40, 19, 86, 27, 90];
   }
 
   ngOnInit() {
@@ -38,14 +38,19 @@ export class UsersComponent implements OnInit {
       response => {
         if (response.code === 200) {
           let data = response.data;
+          this.usersData = [];
+          this.postsData = [];
+          this.lables = [];
           for(let i=0; i<data.length;i++){
-            this.usersData.push(data[i].num_of_registration);
+            this.usersData.push(data[i].num_of_registrations);
             this.postsData.push(data[i].num_of_posts);
             this.lables.push(data[i].date);
           }
-          let clone = JSON.parse(JSON.stringify(this.daysUsersAndPostsChartData));
-          clone[0].data = data;
-          this.daysUsersAndPostsChartData = clone;
+          this.daysUsersAndPostsChartData = [
+            {data: this.usersData, label: 'Users'},
+            {data: this.postsData, label: 'Posts'}
+          ];
+          this.daysChartLabels = this.lables;
         }
       }, error => {
         this.handleError(error);
@@ -83,6 +88,6 @@ export interface ReportResponse {
 
 export interface ReportData {
       date: string,
-      num_of_registration: number,
+      num_of_registrations: number,
       num_of_posts: number
 }
