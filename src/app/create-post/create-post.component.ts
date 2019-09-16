@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreatePostService } from './create-post.service';
-
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { DashboardComponent } from './../dashboard/dashboard.component';
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -13,12 +15,13 @@ export class CreatePostComponent implements OnInit {
   message: any;
   accepted: boolean;
 
-  constructor(private formBuilder: FormBuilder, private createPostService: CreatePostService) { }
+  constructor(private formBuilder: FormBuilder, private createPostService: CreatePostService, private router: Router,
+    private dashBoard: DashboardComponent) { }
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
-      media: [''],
-      title: [''],
+      media: ['', Validators.required],
+      title: ['', Validators.required],
       location: [''],
       hashtags: ['']
     });
@@ -48,19 +51,33 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = new FormData();
-    const locArray = ['0.3445','32.4353'];
-    const hashtagArray = this.uploadForm.value.hashtags.split(",");
-    formData.append('media', this.uploadForm.value.media);
-    formData.append('title', this.uploadForm.value.title);
-    formData.append("location",JSON.stringify(locArray));
-    formData.append('hashtags',encodeURIComponent(JSON.stringify(hashtagArray)));
-    this.createPostService.createPost(formData).subscribe(res => {
-      console.log(res);
-      if(res.code==200){
-        this.accepted = true;
-      }
-      this.message = res.message;
-    }, err => console.log(err));
+    if (this.uploadForm.valid) {
+      const formData = new FormData();
+      const locArray = ['0.3445','32.4353'];
+      const hashtagArray = this.uploadForm.value.hashtags.split(",");
+      formData.append('media', this.uploadForm.value.media);
+      formData.append('title', this.uploadForm.value.title);
+      formData.append("location", JSON.stringify(locArray));
+      formData.append('hashtags', encodeURIComponent(JSON.stringify(hashtagArray)));
+      this.createPostService.createPost(formData).subscribe(res => {
+        if (res.code === 200) {
+          this.accepted = true;
+          this.dashBoard.ngOnInit();
+        }
+        this.message = res.message;
+      },err => {
+        Swal.fire(
+          'Failed to upload!',
+          err.error.message,
+          'warning'
+        );
+      });
+    } else {
+      Swal.fire(
+        'Failed to upload!',
+        'Title and image are required~!',
+        'warning'
+      );
+    }
   }
 }
