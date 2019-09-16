@@ -1,5 +1,5 @@
   <h4 *ngFor="let comment of post?.comments;  let i = index">
-    <div ><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
+    <div style = "max-width: 40em; max-width: 30ch;"><b>{{ comment.author?.username }}</b> {{ comment.text }}<i (click)="deleteComment(post.id, comment.id)" class="fas fa-times delete-comment"></i></div>
   </h4>
 
 <form class="comment-div" (keydown)="onSubmit(post?.id, $event)">
