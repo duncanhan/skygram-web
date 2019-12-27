@@ -1,0 +1,108 @@
+/*Start Global Style*/
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  font-family: sans-serif;
+}
+.container{
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  height:100%
+}
+
+/*Start Login Style*/
+.login{
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+}
+.login h1{
+  margin-bottom: 40px;
+  font-size: 2.5em;
+}
+.span {
+  margin-top: 10px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="text"], input[type="password"], input[type="number"], input[type="email"]{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  background-color: #eeeeef;
+}
+input[type="checkbox"]{
+  margin-right: 5px;
+}
+.login a{
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s all ease-in-out;
+}
+.login a:hover{color: #1bbeff;font-weight: bold}
+.login button{
+  width: 70%;
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  background-color: #1bbeff;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+.login button:hover{
+  width:50%;
+  font-size: 22px;
+  border-radius: 5px;
+
+}
+.login hr{
+  width: 30%;
+  display: inline-block;
+  color: red;
+  border: 2px solid #000;
+}
+
+.login p{
+  display: inline-block;
+  margin: 0px 5px 5px;
+}
+.login ul{
+  list-style: none;
+  margin-bottom:40px;
+}
+.login ul li{
+  display: inline-block;
+  margin-right: 30px;
+  cursor: pointer;
+}
+.login ul li:hover{opacity: 0.6}
+.login ul li:last-child{margin-right: 0}
+.login .copyright{
+  display: inline-block;
+  float: none;
+}
+.alert-danger{
+  width: 70%;
+  margin: auto;
+  padding: 5px;
+  border-radius: 10px 10px 10px 10px;
+  text-align: center;
+  background-color: #f89090;
+  color: red;
+}

@@ -1,0 +1,157 @@
+
+<app-create-post></app-create-post>
+<section class="tada-container content-posts">
+
+  <div class="content-area">
+
+  <div class="content col-xs-8">
+
+    <div *ngFor="let post of posts">
+      <article *ngIf="post?.media.length">
+
+        <div class="posts-container-header post-head">
+          <img src="https://ui-avatars.com/api/?name={{ post?.author?.username}}&background=FF4081&color=fff&uppercase=false" class="post-image">
+          <b class="post-head-text">{{ post?.author?.username }}</b><br>
+        </div>
+
+        <div class="post-image">
+          <img src="{{ post?.media[0]?.url }}" alt="{{ post.title }}">
+        </div>
+        <div class="post-text">
+          <div id="icons">
+            <p>
+              <i class="far fa-heart fa-2x animated bounce" [ngClass]="{'text-success':post.is_liked}" (click)="like(post, $event)"></i>
+              &nbsp;
+              <i class="far fa-comment fa-2x icon-comments animated bounce delay-1s"></i>
+            </p>
+          </div>
+          <h4>{{ post.num_of_likes }} likes</h4>
+          <h4><b>{{ post?.author?.username }}</b> {{ post?.title }}</h4>
+          <div *ngIf="post.comments.length > 0">
+
+            <div *ngIf="post.comments.length > 2">
+              <h4 class="text" data-toggle="modal" attr.data-target="#{{post.id}}">View all {{ post.comments.length }} comments</h4>
+              <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 80%; margin: 10% auto" role="document">
+                  <div class="modal-content">
+                    <i class="fas fa-trash fa-2x" style="text-align: right; margin-right: 10px; margin-top: 10px" (click) = deletePost(post.id)></i>
+                    <div class="modal-body">
+                      <div class="col-sm-8">
+                        <img class="h-100 w-100" src="{{ post?.media[0]?.url }}" alt="{{ post.title }}">
+                      </div>
+                      <div class="col-sm-4">
+                        <div>
+                          <h2>{{post.title}}</h2>
+                        </div>
+                        <div class="post-text" style="text-align:left">
+                          <p>
+                            <i class="far fa-heart fa-3x  animated bounce" (click)="like(post, $event)"></i>
+                            &nbsp;
+                            <i class="far fa-comment fa-3x icon-comments animated bounce delay-1s"></i>
+                          </p>
+                          <h4>{{post.num_of_likes}} likes</h4>
+                          <h4><b>{{username}}</b> {{ post.title }}</h4>
+                          <app-comment-box [postId] = "post.id"></app-comment-box>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h4 *ngFor="let comment of post.comments;  let i = index">
+              <div *ngIf="i > post.comments.length - 3"><b>{{ comment.author?.username }}</b> {{ comment.text }}</div>
+            </h4>
+          </div>
+          <span class="date">{{ post.posted_date | date | timeAgo }}</span>
+        </div>
+        <div class="post-info">
+          <form class="comment-div">
+            <textarea class="post-area" placeholder="Add a comment..." id="comment{{ post.id }}" value=""></textarea>
+            <button (click)="onSubmit(post.id)">Post</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </article>
+    </div>
+
+  </div>
+
+  <div class="sidebar col-xs-4">
+
+    <div class="widget latest-posts" *ngIf="false">
+      <div class="container post-headers">
+        <h3 class="col-xs-8 widget-title">Stories</h3>
+        <h3 class="col-xs-4 widget-title-link"><a href="#">Watch All</a></h3>
+      </div>
+      <div class="posts-container">
+
+        <div class="container post-headers">
+          <div class="item col-xs-8 widget-title-left">
+            <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
+            <div class="info-post">
+              <span><a href="#">Xi Jin Ping</a></span><br>
+              <span class="text">1 HOUR AGO</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="item col-xs-8 widget-title-left">
+            <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
+            <div class="info-post">
+              <span><a href="#">Svetlana Moldova</a></span><br>
+              <span class="text">1.5 HOURS AGO</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="item col-xs-8 widget-title-left">
+            <img src="assets/img/latest-posts-1.jpg" alt="post 1" class="post-image">
+            <div class="info-post">
+              <span><a href="#">Cristiano Ronaldo</a></span><br>
+              <span class="text">3 HOURS AGO</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    <div class="widget latest-posts">
+
+      <div class="container post-headers">
+        <h3 class="col-xs-8 widget-title">Suggestions For You</h3>
+        <h3 class="col-xs-4 widget-title-link"><a href="#">See All</a></h3>
+      </div>
+
+      <div class="posts-container">
+
+        <div *ngFor= "let user of wtf">
+
+          <div class="container post-headers" *ngIf="!user.is_following">
+            <div class="item col-xs-8 widget-title-left">
+              <img src="https://ui-avatars.com/api/?name={{user.username}}&background=FF4081&color=fff&uppercase=false" alt="post 1" class="post-image">
+              <div class="info-post" >
+                <span><a href="user/{{user.username}}">{{user.username}}</a></span><br>
+                <span class="text" *ngIf="user.followed">Follows you</span>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <h3 class="col-xs-4 widget-title-link widget-title-right follow" (click)="follow(user.username,$event)"><a style="cursor: pointer;">Follow</a></h3>
+          </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="clearfix"></div>
+
+  </div>
+
+</section>

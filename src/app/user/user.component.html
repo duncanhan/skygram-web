@@ -1,4 +1,87 @@
-<li *ngFor= "let user of users" (click)="onSelect(user)">
-<div><span>id: </span>{{user.id}}</div>
-<div><span>name: </span>{{user.username}}</div>
-</li>
+<section class="tada-container content-posts blog-3-columns" style="display: flex; flex-direction: column;">
+
+  <div class="header-content-area">
+
+    <div class="content col-xs-4">
+      <img src="assets/img/avatar2.png" alt="Update profile picture" data-toggle="modal" data-target="#modalPic">
+
+      <div class="modal fade" id="modalPic" tabindex="-1" role="dialog" aria-labelledby="yourModal" aria-hidden="true">
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Upload the photo in here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!--// assets/img/img-post-8.jpg -->
+
+    <div class="content col-xs-8">
+      <div class="profile">
+        <h1>{{ user?.username }}</h1>
+        <div class="profile-area profile-button">
+          <span><button class="btn-default">Following</button></span>
+          <span><button class="btn-default" style="width: 34px;"><i class="fas fa-caret-down"></i></button></span>
+        </div>
+      </div>
+      <div class="profile">
+        <ul>
+          <li><b>{{ posts?.length }}</b> posts</li>
+          <li><b>{{ user?.num_of_followers }}</b> followers</li>
+          <li><b>{{ user?.num_of_followings }}</b> following</li>
+        </ul>
+      </div>
+      <div class="profile-bottom">
+        <h3><b>{{ user?.first_name + ' ' + user?.last_name }}</b></h3>
+        <p><a href="{{ user?.email }}">{{ user?.email }}</a></p>
+        <a href="#">Followed by <span>jin_yang</span>, <span>pingpong</span>, <span>planet_stars</span> +11 more</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="profile-content-area">
+
+    <div *ngFor= "let post of posts">
+      <div class="content col-xs-4" *ngFor= "let medium of post.media">
+
+        <article class="profile-images">
+          <div class="profile-post-image">
+            <img src="{{ medium.url }}" alt="{{ post.title }}" data-toggle="modal" attr.data-target="#{{post.id}}">
+              <div class="modal fade" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 80%; margin: 10% auto" role="document">
+                  <div class="modal-content">
+                    <i *ngIf="post.is_owned" class="fas fa-trash fa-2x" style="text-align: right; margin-right: 10px; margin-top: 10px" (click) = deletePost(post.id)></i>
+                    <div class="modal-body">
+                      <div class="col-sm-8">
+                        <img class="h-100 w-100" src="{{ medium.url }}" alt="{{ post.title }}">
+                      </div>
+                      <div class="col-sm-4">
+                        <div>
+                          <h2>{{post.title}}</h2>
+                          <span class="date">{{ post.posted_date | date | timeAgo }}</span>
+                        </div>
+                        <div class="post-text" style="text-align:left">
+                            <p>
+                              <i class="far fa-heart fa-3x  animated bounce" [ngClass]="{'text-success':post.is_liked}" (click)="like(post, $event)"></i>
+                              &nbsp;
+                              <i class="far fa-comment fa-3x icon-comments animated bounce delay-1s"></i>
+                            </p>
+                          <h4>{{post.num_of_likes}} likes</h4>
+                          <h4><b>{{username}}</b> {{ post.title }}</h4>
+                            <app-comment-box [postId] = "post.id"></app-comment-box>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="login">
+    <form [formGroup]="loginForm">
+      <div class="container form-group">
+            <h1>Log in</h1>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username" formControlName="username" #username>
+            </div>
+            <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)" class="alert alert-danger">
+              <div *ngIf="loginForm.controls['username'].errors.required">
+                Username is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Password" formControlName="password" #password><br>
+            </div>
+            <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert alert-danger">
+              <div *ngIf="loginForm.controls['password'].errors.required">
+                Password is required.
+              </div>
+            </div>
+            <div><input type="checkbox"><span>Remember me</span></div>
+            <div><a href="#">Forgot password?</a></div>
+            <div><button type = "submit" (click) = onSubmit() [disabled]="loginForm.pristine || loginForm.invalid">Log in</button></div>
+            <hr><p>Or Connect With</p><hr>
+            <ul>
+                <li><i class="fab fa-facebook fa-2x" style="color:#3D5998"></i></li>
+                <li><i class="fab fa-twitter fa-2x" style="color:#1B9DEE" ></i></li>
+                <li><i class="fas fa-envelope fa-2x" style= "color:red"></i></li>
+            </ul>
+            <hr><p>Become our member</p><hr>
+            <button [routerLink]="['/registration']">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

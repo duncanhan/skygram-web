@@ -1,0 +1,24 @@
+.post-area{
+  resize: none;
+  width: 100%;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-position: bottom right;
+  background-repeat: no-repeat;
+  font-size: 18px;
+}
+div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.delete-comment {
+  opacity: 0.1;
+  float: right;
+}
+
+.delete-comment:hover {
+  opacity: 1;
+  cursor: pointer;
+}

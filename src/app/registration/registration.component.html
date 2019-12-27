@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="login">
+    <form [formGroup]="regisForm">
+      <div class="container form-group">
+            <h1>Account</h1>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username" formControlName="username" #username>
+            </div>
+            <div *ngIf="regisForm.controls['username'].invalid && (regisForm.controls['username'].dirty || regisForm.controls['username'].touched)" class="alert alert-danger">
+              <div *ngIf="regisForm.controls['username'].errors.required">
+                Username is required.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Password" formControlName="password" #password><br>
+            </div>
+            <div *ngIf="regisForm.controls['password'].invalid && (regisForm.controls['password'].dirty || regisForm.controls['password'].touched)" class="alert alert-danger">
+              <div *ngIf="regisForm.controls['password'].errors.required">
+                Password is required.
+              </div>
+            </div>
+            <h3>Personal information</h3>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" #username>
+            </div>
+            <div *ngIf="regisForm.controls['firstName'].invalid && (regisForm.controls['firstName'].dirty || regisForm.controls['firstName'].touched)" class="alert alert-danger">
+              <div *ngIf="regisForm.controls['firstName'].errors.required">
+                First Name is required.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" #username>
+            </div>
+            <div *ngIf="regisForm.controls['lastName'].invalid && (regisForm.controls['lastName'].dirty || regisForm.controls['lastName'].touched)" class="alert alert-danger">
+              <div *ngIf="regisForm.controls['lastName'].errors.required">
+                Last Name is required.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" formControlName="email" #username>
+            </div>
+            <div *ngIf="regisForm.controls['email'].invalid && (regisForm.controls['email'].dirty || regisForm.controls['email'].touched)" class="alert alert-danger">
+              <div *ngIf="regisForm.controls['email'].errors.required">
+                Email is required.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class='input-group date'>
+                <input type="date" class="form-control col-xs-10" placeholder="Birthday" formControlName="birthday" #username>
+                <span class="input-group-addon col-xs-2">
+                    <i class="fas fa-calendar-alt"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="Phone number" formControlName="phone" #username>
+            </div>
+            <div><button type = "submit" (click) = onSubmit() [disabled]="regisForm.pristine || regisForm.invalid">Register</button></div>
+      </div>
+    </form>
+  </div>
+</div>
