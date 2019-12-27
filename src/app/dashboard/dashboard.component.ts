@@ -117,4 +117,7 @@ export class DashboardComponent implements OnInit {
     this.element.value = '';
   }
 
+  deletePost(id: string) {
+    
+  }
 }
